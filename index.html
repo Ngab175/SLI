@@ -636,10 +636,36 @@
   function initials(name){
     return name.split(' ').filter(Boolean).slice(0,2).map(w => w[0]).join('').toUpperCase();
   }
+  // Foto pengurus (dari struktur_sli.pdf), dipetakan ke nama lengkap yang dipakai di data management
+  const teamPhotos = {
+    "Muhammad Irsyad As Shidqi": "assets/team/irsyad-as-shidqi.png",
+    "Arlan Febriansyah": "assets/team/arlan-febriansyah.png",
+    "Rizqia Ainaya Attahirah": "assets/team/rizqia-ainaya.png",
+    "Hamim Ilyas": "assets/team/hamim-ilyas.png",
+    "Alham Suryadi": "assets/team/alham-suryadi.png",
+    "Alfiah Rahma": "assets/team/alfiah-rahma.png",
+    "Dhinda Resty Ananta": "assets/team/dhinda-resty.png",
+    "Dewi Aminah": "assets/team/dewi-aminah.png",
+    "Kholifatul Safira": "assets/team/kholifatul-safira.png",
+    "Dennis Kumara": "assets/team/dennis-kumara.png",
+    "M. Gibran Raihan Maulana": "assets/team/ghibran-raihan.png",
+    "Qadima Hajratun Nisa": "assets/team/qodima-hajratun.png",
+    "Qotrunnida Azka Aulia Elmanan": "assets/team/qotrunnida-azka.png",
+    "Khoirotun Nisa": "assets/team/khoirotun-nisa.png",
+    "Zalfa Humaira Qurotul Aini": "assets/team/zalfa-humaira.png",
+    "Yusuf Ngabdillah": "assets/team/yusuf-ngabdillah.png",
+    "Arwa Naura Tirta Bening": "assets/team/arwa-naura.png",
+    "Rifki Nakatomi": "assets/team/rifki-nakatomi.png",
+    "Fajrin Jibran": "assets/team/fajrin-jibran.png",
+  };
   function personChip(name, size){
     size = size || 16;
+    const photo = teamPhotos[name];
+    const avatar = photo
+      ? `<div class="w-${size} h-${size} rounded-full overflow-hidden border border-white/15 shrink-0 bg-white/5"><img src="${photo}" alt="${name}" loading="lazy" class="w-full h-full object-cover object-top"></div>`
+      : `<div class="w-${size} h-${size} rounded-full bg-white/5 border border-white/15 flex items-center justify-center font-display font-semibold text-silver shrink-0">${initials(name)}</div>`;
     return `<div class="flex flex-col items-center text-center gap-2 avatar-chip">
-      <div class="w-${size} h-${size} rounded-full bg-white/5 border border-white/15 flex items-center justify-center font-display font-semibold text-silver shrink-0">${initials(name)}</div>
+      ${avatar}
       <p class="text-xs sm:text-sm text-pale/80 leading-tight">${name}</p>
     </div>`;
   }
